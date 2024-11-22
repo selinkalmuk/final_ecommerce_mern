@@ -1,0 +1,72 @@
+.user-profile-header {
+    display: block;
+    padding: 0px 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0%;
+}
+.user-profile-page{
+    padding: 50px 3% ;
+    margin: 5%;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+}
+.header-box{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.user-profile-image{
+    width:180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    
+}
+.username{
+    padding: 10px;
+}
+.follow{
+    padding: 10px;
+}
+.follow-button{
+    padding: 10px;
+    text-align: center;
+}
+.followers{
+    padding: 10px;
+}
+
+.social-links{
+    padding: 10px;
+}
+.social-links a{
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(255, 102, 0);
+}
+
+.user-description{
+    color: rgb(41, 41, 41);
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 3%;
+    text-align: left;
+    margin: 20px ;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+.section-box, .section-box p{
+    display: flex;
+    text-align: center;
+    padding: 0% 5%;
+
+    color: rgb(102, 102, 102);
+}
+
+

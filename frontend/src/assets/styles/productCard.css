@@ -1,0 +1,195 @@
+/* productCard.css */
+
+/* Global değişkenlerin tanımı */
+:root{
+  --primary-color:#edc5ff; 
+  --primary-hover-color: #e65c00;
+  --secondary-color:#333;
+  --light-color: #fff;
+  --shadow-color: rgba(0,0,9,0.1);
+  --color-dark: #333;
+  --color-light: #777;
+  --color-medium: #555;
+  --price-color: #f0d0ff;
+  --card-border-radius: 8px;
+  --card-padding: 1rem;
+  --button-border-radius: 4px;
+  --transition-duration: 0.3s;
+
+}
+.homepage{
+  padding: 10px 20px;
+}
+
+/* Home Sayfasındaki Ürünler İçin Yatay Kaydırma */
+.home-container {
+    display: flex; /* Ürün kartlarını yatayda sıralamak için */
+    overflow-x: auto; /* Yatay kaydırma */
+    overflow-y: hidden;
+    gap: 1rem; /* Kartlar arasındaki boşluk */
+    padding: 1rem;
+    scroll-snap-type: x mandatory; /* Kaydırmayı daha düzgün hale getirmek için */
+    scroll-behavior:smooth;
+    justify-content:flex-start;
+  }
+  .home-container::-webkit-scrollbar {
+    height: 8px; /* Scrollbar yüksekliği */
+  }
+  
+  .home-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-medium); /* Scrollbar rengi */
+    border-radius: 10px;
+  }
+  
+  .home-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover-color); /* Hover rengi */
+  }
+
+/* Ürün Kartlarının Bulunduğu Konteyner */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ekrana göre sütun sayısı ayarlanır */
+    gap: 1rem; /* Kartlar arasındaki boşluk */
+    padding: 1rem; /* Konteynerin etrafındaki boşluk */
+    justify-items: center; /* Kartları ortalar */
+  }
+
+.product-card {
+    flex: 0 0 auto; /* Kartların genişliği otomatik olur, ancak kaydırma için dururlar */
+    width: 250px; /* Kart genişliğini belirliyoruz */
+    background-color: var(--light-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    overflow: hidden;
+    max-width: 300px;
+    margin: 1rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+  }
+  
+  .product-description {
+    font-size: 0.85rem;
+    color: var(--color-light);
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-artist {
+    font-size: 0.9rem;
+    color: var(--color-medium);
+    margin-bottom: 1rem;
+  }
+  
+  .product-artist span {
+    font-weight: bold;
+    color: var(--color-dark);
+  }
+  
+  .product-price span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--price-color);
+  }
+  
+  .add-to-cart {
+    background-color: var(--price-color);
+    color: var(--light-color);
+    border: none;
+    padding: 0.8rem;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart:hover {
+    background-color: var(--primary-hover-color); 
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .product-card {
+      max-width: 100%;
+      margin: 0.5rem;
+    }
+    .product-title {
+        font-size: 1rem; /* Başlık boyutunu küçültüyoruz */
+      }
+    
+      .product-description {
+        font-size: 0.8rem; /* Açıklama boyutunu küçültüyoruz */
+      }
+    
+      .product-artist {
+        font-size: 0.8rem; /* Sanatçı adı font boyutunu küçültüyoruz */
+      }
+    
+      .product-price span {
+        font-size: 1rem; /* Fiyat font boyutunu küçültüyoruz */
+      }
+    
+      .add-to-cart {
+        padding: 0.6rem; /* Mobilde butonun içeriğini daha kompakt yapıyoruz */
+        font-size: 0.9rem; /* Buton font boyutunu küçültüyoruz */
+      }
+  }
+
+  /* Daha Küçük Ekranlar İçin (Telefonlar) */
+@media (max-width: 480px) {
+    
+    .product-card {
+      max-width: 100%;
+      margin: 0.5rem; /* Kartlar arasında daha küçük boşluk */
+    }
+  
+    .product-title {
+      font-size: 0.9rem; /* Başlık font boyutunu daha da küçültüyoruz */
+    }
+  
+    .product-description {
+      font-size: 0.75rem; /* Açıklama font boyutunu daha da küçültüyoruz */
+    }
+  
+    .product-artist {
+      font-size: 0.75rem; /* Sanatçı adı font boyutunu daha da küçültüyoruz */
+    }
+  
+    .product-price span {
+      font-size: 0.9rem; /* Fiyat font boyutunu daha da küçültüyoruz */
+    }
+  
+    .add-to-cart {
+      padding: 0.5rem; /* Buton boyutunu küçültüyoruz */
+      font-size: 0.8rem; /* Buton font boyutunu daha da küçültüyoruz */
+    }
+  }
+  @media(min-width: 1000px){
+    .home-container{
+      justify-content: center;
+    }
+    .product-container{
+      grid-template-columns: repeat(5, 1fr);
+      padding: 5%;
+      
+    }
+  }

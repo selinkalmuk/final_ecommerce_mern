@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Profili</title>
+</head>
+<body>
+    <h1><%= user.username %> Profili</h1>
+    <p>Email: <%= user.email %></p>
+    <p>Biyografi: <%= user.bio %></p>
+    <a href="/users/form/<%= user._id %>">Profili Güncelle</a>
+    <a href="/users">Geri Dön</a>
+</body>
+</html>

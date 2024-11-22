@@ -1,0 +1,45 @@
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 16px;
+    object-fit: cover;
+
+}
+
+.artist-info{
+    padding: 3%;
+    margin: 8px;
+}
+.artist-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    align-items: center;
+}
+
+
+.profile{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.artist-description{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align:left ;
+}
+
+.follow-button{
+    padding:8px 25px 8px 25px;
+    background-color: rgb(153, 142, 253);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.follow-button:hover{
+    background-color: rgb(151, 39, 255); 
+    animation-delay: 1s;
+}
+

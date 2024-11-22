@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Formu</title>
+</head>
+<body>
+    <h1><%= user ? 'Profili Güncelle': 'Yeni Kullanıcı Ekle' %></h1>
+    <form action="<%= user ? '/users/update' + user._id : '/users/create' %>" method="POST">
+        <label for="username">Kullanıcı Adı</label>
+        <input type="text" name="username" value="<%= user ? user.username : '' %>" required>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" value="<%= user? user.email : '' %>" required>
+
+        <label for="password">Şifre</label>
+        <input type="password" name="password" <%= user? '': 'required'  %>>
+
+        <label for="bio"></label>
+        <textarea name="bio" <%= user ? user.bio : ''  %>></textarea>
+
+        <button type="submit"><%= user? 'Güncelle': 'Ekle' %></button>
+    </form>
+    <a href="/users">Geri Dön</a>
+</body>
+</html>

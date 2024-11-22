@@ -1,0 +1,18 @@
+.not-found{
+    align-items: center;
+    display: block;
+    justify-content: baseline;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10%;
+    border-radius: 10%;
+    box-shadow: 0px 4px 8px rgba(105, 78, 3, 0.2);
+    margin: 10%;
+    
+}
+.not-found h1{
+    color:rgb(92, 178, 218)
+}
+.not-found-img{
+    width:200px;
+    height: 200px;
+}

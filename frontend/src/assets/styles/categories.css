@@ -1,0 +1,30 @@
+/*return(
+    <div className="category-card">
+        <div className="category-info">
+            <h3>{category}</h3>
+        </div>
+    </div>
+);
+<div className="categories">*/
+
+.categories{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    margin:15px;
+    border-radius: 10px;
+    background-color: #cee7de;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-card{
+    padding: 0px 0px;
+}
+
+.category-info{
+    font-size: small;
+    padding: 0.5px 15px;
+    margin: 5px 0px;
+}
+

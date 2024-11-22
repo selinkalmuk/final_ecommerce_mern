@@ -1,0 +1,106 @@
+/* Atolyelerin Bulunduğu Konteyner */
+.workshop-container {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ekrana göre sütun sayısı ayarlanır */
+    gap: 1rem; /* Kartlar arasındaki boşluk */
+    padding: 1rem; /* Konteynerin etrafındaki boşluk */
+    justify-items: center; /* Kartları ortalar */
+  }
+
+.workshop-card {
+    width: 90%;
+    margin: 5%;
+    max-width:1156px;
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.workshop-card:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.workshop-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin: 15px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.workshop-card .content {
+    flex-grow: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.workshop-card .content .top {
+    margin-bottom: 10px;
+}
+
+.workshop-card .date {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.workshop-card .workshop-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.workshop-card .workshop-category {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+}
+
+.workshop-card .location {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.workshop-card .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    padding-right: 30px;
+}
+.workshop-card .instructor{
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+.workshop-card .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.workshop-card button{
+    font-size: 14px;
+    border-style: none;
+    background-color: #424168;
+    color:#eee;
+
+    padding: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
