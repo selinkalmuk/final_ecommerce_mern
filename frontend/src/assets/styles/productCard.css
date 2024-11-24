@@ -193,3 +193,99 @@
       
     }
   }
+
+  /* Product Admin*/
+  /* Ana konteyner */
+form {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form başlık */
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Form içindeki her bir alan */
+form div {
+  margin-bottom: 15px;
+}
+
+/* Etiketler */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Girdi alanları */
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Textarea için özel boyut */
+form textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Girdi alanı üzerine gelince */
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Boyut alanları için yan yana düzen */
+form .dimensions input {
+  display: inline-block;
+  width: calc(33% - 8px);
+  margin-right: 8px;
+}
+
+/* Sonuncu input için margin kaldır */
+form .dimensions input:last-child {
+  margin-right: 0;
+}
+
+/* Gönder butonu */
+form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Buton hover efekti */
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Hata mesajı veya geri bildirim */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}

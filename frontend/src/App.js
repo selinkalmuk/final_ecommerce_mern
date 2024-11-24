@@ -13,6 +13,7 @@ import './App.css';
 import NotFoundPage from "./pages/NotFoundPage";
 import Login from "./pages/Login";
 import UserProfile from "./pages/UserProfile";
+import ProductAdmin from "./pages/ProductAdmin";
 
 
 const App = () => {
@@ -24,11 +25,13 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/productdetail" element={<ProductDetail/>} />
+          <Route path="/productadmin" element={<ProductAdmin/>} />
           <Route path="/workshopdetail" element={<WorkshopDetail/>} />
-          <Route path="*" element={<NotFoundPage/>} />
+          
           <Route path="/login" element={<Login />} />
           <Route path='/userprofile' element={<UserProfile />}></Route>
           <Route path="/workshops" element={<WorkshopPage/>}></Route>
+          <Route path="*" element={<NotFoundPage/>} />
         </Routes>
       </Router>
       <Footer/>
