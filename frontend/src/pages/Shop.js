@@ -1,6 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const ShopPage = () => {
+
+    const [products, setProducts] = useState([]);
+
+    async function getProducts() {
+        try{
+        await axios.get('http://localhost:5000/products/')
+            .then(response => {
+                setProducts(response.data);
+                console.log(response.data);
+            });
+        }catch(error){
+            console.error('Error fetching products: ', error);
+        }
+            
+    }
+    useEffect(()=>{
+        getProducts();
+    },[]);
+
+    const navigate=useNavigate();
+
+    const productItems = products.map((product) =>{
+
+       return( 
+       <div 
+        key={product._id}
+        onClick={()=> navigate(`/product/${product._id}`)}
+        style={{cursor:'pointer'}}
+       >
+       <ProductCard
+                imgsrc={product.images[0]} 
+                name={product.name} 
+                description={product.description}
+                artist={product.artistName}
+                    price={`$${product.price}`}/>
+        </div>
+        );
+
+    });
+
 
     const pageTitle = "Shop";
     return(
@@ -9,6 +51,7 @@ const ShopPage = () => {
                 <h2>{pageTitle}</h2>
             </div>
             <div className="product-container">
+                {productItems}
                 <ProductCard 
                 imgsrc="https://i.pinimg.com/736x/5e/86/b9/5e86b952ae661d28474f857ab798246d.jpg" 
                 name="Artwork Name" 

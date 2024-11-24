@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     images: [{ type: String }],
     createdAt: { type: Date, default: Date.now},
     artistId: { type: String, required: false},
-    artistName: {type:String, requied: true},
+    artistName: {type:String, required: true},
     sellerId: { type: mongoose.Schema.ObjectId, ref: 'User', required: true}, // Satan kullanıcının id si alın
     material: {type: String},
     dimensions: {
