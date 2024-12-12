@@ -23,14 +23,14 @@ const Footer = () => {
                     <h4>Contact Us</h4>
                     <p>Email: info@artico.com</p>
                     <p>Phone: +1 234 567 890</p>
-                    <div class="social-icons">
+                    <div className="social-icons">
                         <a href="#" aria-label="Facebook">📘</a>
                         <a href="#" aria-label="Twitter">🐦</a>
                         <a href="#" aria-label="Instagram">📷</a>
                         <a href="#" aria-label="LinkedIn">🔗</a>
                     </div>
                 </div>
-                <div class="footer-bottom">
+                <div className="footer-bottom">
                     <p>&copy; 2024 Artico. All rights reserved.</p>
                 </div>
             </div>

@@ -6,6 +6,7 @@
     background-color: #f9f9f9;
     font-family: Arial, sans-serif;
 }
+
 .product-details{
     display: flex;
     flex-wrap: wrap;
@@ -16,11 +17,19 @@
     box-shadow: 0px 2px 10px rgba(0,0,0, 0.1);
     overflow: hidden;
 }
+.img-box{
+ width:50%;
+ display: flex;
+ justify-content: center;
+}
 .product-img{
     display: block;
     border-bottom: 1px solid #e0e0e0;
     height:400px;
     width:auto;
+    max-width: 100%;
+    object-fit: cover;
+    
 }
 .product-info{
  padding: 20px;
@@ -29,12 +38,26 @@
     flex-direction: column;
     justify-content: space-between;
 }
-.product-description{
+
+.product-description-div{
     font-size: 16px;
     color: #555;
     line-height: 1.5;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    width: 100%; /* Kartın tamamını kaplaması için width 100% yapılmalı */
+    box-sizing: border-box; /* Padding'i de kapsayacak şekilde kutu boyutunu hesapla */
+}
+.product-description-div{
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center;
+    align-items: center;
     padding: 20px;
     font-family: Arial, sans-serif;
 }
@@ -45,22 +68,23 @@
     margin: 0px;
 }
 .product-price{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
-    color: #ffeaea;
-    background-color: rgb(52, 128, 243);
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0px 2px 10px;
+    color: #303030;
+    text-decoration: underline;
+    padding: 5px;
+    margin-bottom: 20px;
+
 }
 
 /* Ürün bilgileri */
-.product-info {
+.product-info-page {
     padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+       
 }
 
 
@@ -99,13 +123,45 @@
     display: inline-block;
     margin: 0px 10px;
 }
+
+.product-actions{
+    display: flex;
+    gap:5px;
+    justify-content: center;
+    
+}
+.buy-now-div, .add-to-cart-div{
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffeaea;
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+    width:100%;
+    height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0px 2px 10px;
+    transition-duration: 2ms;
+}
+.add-to-cart-div{
+    background-color: rgb(52, 128, 243);
+}
+.add-to-cart-div:hover, .buy-now-div:hover{
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+    
+}
+
+
+
 @media (max-width: 700px){ /*make it 768 in the future*/
     .product-details{
         display: block;
     }
-    .product-img{
-        padding: 5%;
-        width:90%;
+    .img-box{
+        align-items: center;
+        margin-top: 15px;
+        width:100%;
         height: auto;
     }
 }

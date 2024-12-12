@@ -13,7 +13,8 @@ const createWorkshop = async (req, res) => {
             images,
             instructor,
             instructorId,
-            registeredUsers
+            registeredUsers,
+            category
         } = req.body;
         if(!title || !description || !location || !capacity){
             return res.status(400).json({error:"Please fill all the mandatory fields."});
@@ -28,7 +29,8 @@ const createWorkshop = async (req, res) => {
             images,
             instructor,
             instructorId,
-            registeredUsers
+            registeredUsers,
+            category
         });
         await newWorkshop.save();
         res.status(201).json(newWorkshop);

@@ -15,9 +15,9 @@ const WorkshopCard = ({imgsrc, title, category, instructor, location, date, pric
             </div>
             <div className="details"><p className="location">{location}</p>
                 <span className="date">{date}</span>
-                <span className="price">{price}</span>
+                <span className="price-workshop">{price}</span>
             </div>
-            <button>More Info</button>
+            <button className="details-button">More Info</button>
         </div>
     );
 };

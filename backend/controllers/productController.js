@@ -39,10 +39,10 @@ const createProduct = async (req, res) =>{
         // Save new product to the db
         await newProduct.save();
         // Return saved new product
-        res.status(201).json(newProduct);
+        return res.status(201).json(newProduct);
         
     } catch (error) {
-        res.status(500).json({error: "New product creation failed."});
+        return res.status(500).json({error: "New product creation failed."});
     }
 };
 
@@ -53,9 +53,9 @@ const getAllProducts = async (req, res) =>{
         if(products.length === 0){
             return res.status(200).json({message:"No product found.", products:[]});
         }
-        res.status(200).json(products);
+        return res.status(200).json(products);
     } catch (error) {
-        res.status(500).json({error: "Ürünler getirilirken hata oluştu."});
+        return res.status(500).json({error: "Ürünler getirilirken hata oluştu."});
     }
 };
 
@@ -66,10 +66,10 @@ const getProductById = async (req, res) =>{
         if(!product){
             return res.status(404).json({message:"Product not found "});
         }
-        res.status(200).json(product);
+        return res.status(200).json(product);
         
     } catch (error) {
-        res.status(500).json({error: "Ürün getirilemedi."});
+        return res.status(500).json({error: "Ürün getirilemedi."});
     }
 };
 
@@ -84,9 +84,9 @@ const updateProduct = async (req, res) =>{
         if(!updatedProduct){
             return res.status(404).json({error:"Product not found"});
         }
-        res.status(200).json(updatedProduct);
+        return res.status(200).json(updatedProduct);
     } catch (error) {
-        res.status(500).json({error: "Ürün güncellenemedi"});
+        return res.status(500).json({error: "Ürün güncellenemedi"});
     }
 };
 
@@ -97,10 +97,10 @@ const deleteProduct = async (req, res) =>{
         if(!deletedProduct){
             return res.status(404).json({error:"Product didnt found."});
         }
-        res.status(200).json({message: "Product deleted successfully."});
+        return res.status(200).json({message: "Product deleted successfully."});
 
     } catch (error) {
-        res.status(500).json({error: "Ürün silinemedi"});
+        return res.status(500).json({error: "Ürün silinemedi"});
     }
 };
 
@@ -112,10 +112,10 @@ const getProductsByArtist = async (req, res) =>{
         if(products.length === 0){
             return res.status(404).json({error: "Artist products didnt find."});
         }
-        res.status(200).json({products});
+        return res.status(200).json({products});
         
     } catch (error) {
-        res.status(500).json({error: "Sanatçının ürünleri bulunamadı."});
+        return res.status(500).json({error: "Sanatçının ürünleri bulunamadı."});
     }
 };
 // Belirli bir sanatçıya ait ürünleri getirir.
@@ -126,9 +126,9 @@ const getProductsByCategory = async (req, res) =>{
         if(products.length === 0){
             return res.status(404).json({error: "Category products didnt find."});
         }
-        res.status(200).json(products);
+        return res.status(200).json(products);
     } catch (error) {
-        res.status(500).json({error: "Kategori ürünleri bulunamadı"});
+        return res.status(500).json({error: "Kategori ürünleri bulunamadı"});
     }
 };
 

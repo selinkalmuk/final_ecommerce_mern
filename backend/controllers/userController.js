@@ -1,4 +1,15 @@
 const User = require('../models/User');
+const bcrypt =  require("bcrypt");
+const jwt = require("jsonwebtoken");
+const dotenv=require('dotenv');
+dotenv.config();
+
+// Create token with user id
+const createToken = (_id) =>{
+    // expiresIn 1 day
+    // JWT_SECRET is a secret string that is used to sign the token
+    return jwt.sign({_id}, process.env.JWT_SECRET, {expiresIn:'1d'});
+};
 
 // User creation 
 const createUser = async (req, res) => {
@@ -20,22 +31,37 @@ const createUser = async (req, res) => {
         // Ensure essential fields are provided based on the registration type
         if (!username) return res.status(400).json({error: 'Username is required'});
         
-        if (!email) return res.status(400).json({error: 'Username is required'});
+        if (!email) return res.status(400).json({error: 'Email is required'});
         // Password required only for email-based sign-up
-        if(!password && !googleId && facebookId){
+        if(!password && !googleId && !facebookId){
             return res.status(400).json({error: "Password is required for email sign-up"});
         }
         // Check for unique email or social IDs
-        const existingUser = await User.findOne({$or:[ {email}, { googleId }, {facebookId} ]});
-        if (existingUser) {
-            return res.status(400).json({ error:'Bu eposta adresiyle zaten bir kullanıcı mevcut' }); 
-        }
-        // Creating user with only the fiields provided
+        const existingUser = await User.findOne({
+            $or: [
+              { email },
+              ...(googleId ? [{ googleId }] : []),
+              ...(facebookId ? [{ facebookId }] : [])
+            ]
+          });
+          
+          if (existingUser) {
+            return res.status(400).json({ error: 'Bu eposta adresiyle veya kimlik bilgisiyle zaten bir kullanıcı mevcut' });
+          }
+          // generate salt and hash password for secure storage.
+          let hashedPassword;
+          if(password && password.trim() !== ''){
+            
+            const salt = await bcrypt.genSalt(10);
+            hashedPassword = await bcrypt.hash(password, salt); 
+          }
+         
+        // Creating user with only the fields provided
         const newUser = new User({
             username,
             name,
             email,
-            password: googleId || facebookId ? undefined : password,
+            password: googleId || facebookId ? undefined : hashedPassword,
             googleId,
             facebookId,
             profilePicture,
@@ -46,8 +72,10 @@ const createUser = async (req, res) => {
             socialLinks,
         });
         await newUser.save();
-        res.status(201).json(newUser);
+        const token = createToken(newUser._id);
+        res.status(201).json({newUser:newUser, token:token});
     } catch (error) {
+        console.error("Error during user creation:", error);
         res.status(500).json({error: "User creation is failed."});
     }
 }
@@ -65,7 +93,32 @@ const getAllUsers = async (req, res) => {
         res.status(500).json({ error: 'All users couldnt got' });
     }
 };
-
+// Login User
+const loginUser = async (req, res) => {
+    try {
+        const user = await User.findOne({
+            email: req.body.email});
+        if(!user){
+            return res.status(404).json({message: "User not found"});
+        }
+        const validPassword = await bcrypt.compare(
+            req.body.password,
+            user.password
+        );
+        if(!validPassword){
+           return res.status(400).json({
+                message:"Invalid Password",
+                status: "400 Bad Request",
+            });
+        }
+        const token = createToken(user._id);
+     
+        res.status(200).json({user:user, token:token});
+        
+    } catch (error) {
+        res.status(500).json({error: " Kullanıcı getirilemedi."})
+    }
+};
 // Get User
 const getUserById= async (req, res) => {
     try {
@@ -129,4 +182,4 @@ const getUserByType = async(req, res) => {
 
 
 
-module.exports = { getAllUsers, createUser , getUserById, updateUser, deleteUser, getUserByType};
+module.exports = { getAllUsers, createUser , loginUser, getUserById, updateUser, deleteUser, getUserByType};

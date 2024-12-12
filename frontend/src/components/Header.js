@@ -3,8 +3,8 @@ import '../assets/styles/header.css'
 import { Link } from "react-router-dom";
 // "react-icons" package hamburger button
 import {MdOutlineMenu} from 'react-icons/md'
+import { CgProfile } from "react-icons/cg";
 
-import HomePage from "../pages/Home";
 
  //MobileNavigation.js
  const Hamburger = <MdOutlineMenu className="HamburgerMenu"
@@ -45,7 +45,7 @@ const Header = () => {
 
             <div className="header-links">
                 <div className="cart">
-                    <span className="cart-icon">🛒</span>
+                    <span className="cart-icon"><Link className="link" to={"/cart"}>🛒</Link></span>
                     <span className="cart-count"> 0 </span>
                 </div>
                 <div className="favorite">
@@ -53,6 +53,9 @@ const Header = () => {
                 </div>
                 <div className="profile">
                     <span className="profile-icon"><Link className="link" to={"/userprofile"}>😀</Link></span>
+                </div>
+                <div className="profile">
+                    <span className="profile-icon"><Link className="link" to={"/profile"}><CgProfile /></Link></span>
                 </div>
             </div>
             
