@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllUsers, createUser, getUserById, updateUser, deleteUser, getUserByType } = require('../controllers/userController');
+const { getAllUsers, createUser,loginUser, getUserById, updateUser, deleteUser, getUserByType } = require('../controllers/userController');
 
 
 // Kullanıcıları listeleme endpoint'i
@@ -15,6 +15,8 @@ router.post('/', createUser);
 router.put('/:id', updateUser);
 //Kullanıcı silme
 router.delete('/:id', deleteUser); 
+// Kullanıcı girişi
+router.post('/login', loginUser);
 
 
 

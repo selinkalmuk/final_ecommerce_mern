@@ -1,7 +1,60 @@
-import React from "react";
+import {useEffect, useState} from "react";
 import WorkshopCard from "../components/WorkshopCard";
 import "../assets/styles/workshopCard.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 const WorkshopPage = () => {
+    const navigate = useNavigate();
+    const [workshops, setWorkshops] = useState([]);
+    const fetchWorkshops = async () => {
+        try {
+            await axios.get('http://localhost:5000/workshops/')
+                .then(response =>{
+                    setWorkshops(response.data);
+                    console.log(response.data);
+                    
+                });
+        } catch (error) {
+            console.error('Error fetching workshops: ', error);
+            
+        }
+       
+    };
+    useEffect(()=>{
+        fetchWorkshops();
+    },[]);
+
+    const workshopItems = workshops.map((workshop) =>{
+        const formattedDate = new Intl.DateTimeFormat("tr-TR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+        }).format(new Date(workshop.date));
+        return (
+            <div 
+                key={workshop._id}
+                onClick={()=> navigate(`/workshop/${workshop._id}`)}
+                style={{cursor:'pointer'}}
+            >
+            <WorkshopCard 
+                    imgsrc = {workshop.images[0]}
+                    title = {workshop.title} 
+                    category="Lorem ipsum dolor" 
+                    instructor={workshop.instructor} 
+                    location={workshop.location}
+                    date= {formattedDate}
+                    price={`$${workshop.price}`}
+                />
+            
+            </div>
+        )
+    });
+
+
 
     const pageTitle = "Workshops";
     return(
@@ -10,6 +63,7 @@ const WorkshopPage = () => {
                 <h2>{pageTitle}</h2>
             </div>
             <div className="workshop-container">
+                {workshopItems}
                 <WorkshopCard 
                     imgsrc = "https://i.pinimg.com/736x/5e/86/b9/5e86b952ae661d28474f857ab798246d.jpg"
                     title = "Workshop Name" 

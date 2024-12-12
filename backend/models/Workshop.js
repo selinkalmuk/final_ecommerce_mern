@@ -11,6 +11,7 @@ const workshopSchema = new mongoose.Schema({
     instructor: { type: String, required: true },
     instructorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     registeredUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    category: {type: String, required:true, default:"unspecified"}
 });
 
 module.exports = mongoose.model("Workshop", workshopSchema);

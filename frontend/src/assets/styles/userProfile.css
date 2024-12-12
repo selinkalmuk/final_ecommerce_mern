@@ -69,4 +69,21 @@
     color: rgb(102, 102, 102);
 }
 
+.about-text-card {
+    background-color: azure;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin:0%;
+    padding: 0%;
+}
+
+.about-text-card textarea{
+    background-color: aliceblue;
+    min-height: 100px;
+    padding: 0;
+    margin: 0;
+   
+}
 

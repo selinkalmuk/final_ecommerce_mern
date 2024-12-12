@@ -68,6 +68,9 @@
   
   .product-card:hover {
     transform: scale(1.05);
+    .product-price{
+      background-color: #63adfd;
+    }
   }
   
   .product-image {
@@ -78,6 +81,9 @@
   
   .product-info {
     padding: 1rem;
+    height: fit-content;
+    min-height:auto;
+
   }
   
   .product-title {
@@ -85,12 +91,23 @@
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: var(--color-dark);
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   
   .product-description {
     font-size: 0.85rem;
     color: var(--color-light);
     margin-bottom: 0.5rem;
+    height: 50px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
   
   .product-artist {
@@ -104,11 +121,38 @@
     color: var(--color-dark);
   }
   
-  .product-price span {
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--price-color);
+  .product-price {
+    position: relative; /* Konteyneri relatif konumda tutuyoruz */
+    height: 25px; /* Konteyner yüksekliği */
   }
+  
+  .price,
+  .buy-now {
+    font-size: large;
+    position: absolute; /* Elemanları aynı alanda üst üste koymak için absolute konumlandırma */
+    top: 50%; /* Yatayda ortalamak için */
+    left: 50%; /* Yatayda ortalamak için */
+    transform: translate(-50%, -50%); /* Yatay ve dikeyde tam ortalamak için */
+    opacity: 1; /* Başlangıçta tamamen görünür */
+    transition: opacity 0.3s ease; /* Opaklık geçiş animasyonu */
+    text-align: center; /* İçeriği ortalamak için */
+  }
+  
+  .price {
+    opacity: 1; /* Başlangıçta fiyat görünsün */
+  }
+  
+  .buy-now {
+    opacity: 0; /* Başlangıçta "Buy Now" görünmesin */
+  }
+.product-card:hover .price {
+  opacity: 0; /* Hover'da fiyat kaybolsun */
+}
+
+.product-card:hover .buy-now {
+  opacity: 1; /* Hover'da "Satın Al" görünsün */
+}
+
   
   .add-to-cart {
     background-color: var(--price-color);

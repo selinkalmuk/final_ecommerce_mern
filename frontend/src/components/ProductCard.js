@@ -10,7 +10,8 @@ const ProductCard = ({imgsrc, name, description, artist, price})=>{
           <p className="product-description">{description}</p>
           <p className="product-artist">Artist: <span>{artist}</span></p> 
           <div className="product-price">
-            <span>{price}</span>
+            <span className="price">{price}</span>
+            <span className="buy-now">Buy Now</span>
           </div>
         </div>
       </div>

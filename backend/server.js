@@ -32,6 +32,8 @@ const productRoutes = require('./routes/productRoutes');
 const workshopRoutes = require('./routes/workshopRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const authRoutes = require('./routes/authRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+
 
 //MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
@@ -49,7 +51,7 @@ app.use('/products', productRoutes);
 app.use('/workshops', workshopRoutes);
 app.use('/orders', orderRoutes);
 app.use('/api/auth', authRoutes);
-
+app.use('/cart', cartRoutes);
 
 
 // Start application
